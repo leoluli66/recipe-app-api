@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+    ports: #map host to image
+      - "8000:8000"
+    volumes: # allows us to get the updates to our project into our docker image in real time
+      - ./app:/app
+    command: > # run application in docker container
+      sh -c "python manage.py runserver 0.0.0.0:8000"
